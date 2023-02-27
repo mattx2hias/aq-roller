@@ -1,5 +1,9 @@
 .dice-num {
     border: 1px solid black;
-    padding: 1rem;
+    padding: .5rem;
     margin: .25rem;
+}
+img {
+    width: 5rem;
+    height: 5rem;
 }

@@ -5,6 +5,9 @@ const defSlider = document.getElementById('def-slider')
 const atkVal = document.getElementById('atk-val')
 const defVal = document.getElementById('def-val')
 
+const atkDieList = document.getElementById('atk-die-list')
+const defDieList = document.getElementById('def-die-list')
+
 atkVal.innerHTML = atkSlider.value
 defVal.innerHTML = defSlider.value
 
@@ -16,52 +19,79 @@ defSlider.oninput = () => {
     defVal.innerHTML = defSlider.value
 }
 
-let dieArray = [];
-let dieArrayImg = []
+function removeAllChildren(element) {
+    let child = element.lastElementChild
+    while(child) {
+        element.removeChild(child)
+        child = element.lastElementChild
+    }
+}
+
+function clearAllDice() {
+    removeAllChildren(atkDieList)
+    removeAllChildren(defDieList)
+}
+
+async function assignImage(path) {
+    let button = document.createElement('button')
+    let img = document.createElement('img')
+    img.src = path
+    button.appendChild(img)
+    return button
+}
 
 /*
 2 Side Bows - 33.33%
 3 Side Swords - 50%
 1 Side Critical - 16.66%
 */
-const atkDieList = document.getElementById('atk-die-list')
-function attack() {
-    let child = atkDieList.lastElementChild
-    while(child) {
-        atkDieList.removeChild(child)
-        child = atkDieList.lastElementChild
-    }
-    let img = document.createElement('img')
+async function attack() {
+    
+    removeAllChildren(atkDieList)
+    let button
     for(let i = 0; i < atkSlider.value; i++) {
-        let button = document.createElement('button')
-        dieArrayImg[i] = document.createElement('img')
         switch(Math.floor(Math.random()*6)+1) {
-            case 1 || 2: 
-            dieArray[i] = 'bow'; 
-            dieArrayImg[i].src = '.\\images\\range.png'
-            break;
-            case 3 || 4 || 5: 
-            dieArray[i] = 'sword'; 
-            dieArrayImg[i].src = '.\\images\\sword.png'
-            break;
+            case 1:
+            case 2: 
+                button = await assignImage('./images/bow.png')
+                break
+            case 3: 
+            case 4:
+            case 5:
+                button = await assignImage('./images/sword.png')
+                break
             case 6: 
-            dieArray[i] = 'critical'; 
-            dieArrayImg[i].src = '.\\images\\crit.png'
-            break;
+            button = await assignImage('./images/crit.png')
+            break
         }
-        button.appendChild(dieArrayImg[i])
         atkDieList.appendChild(button)
         
     }
-    console.log(dieArray)
 }
 /*
 4 Sides Blank - 66.66%
 1 Side Shield - 16.66%
 1 Side Critical - 16.66%
 */
-function defend() {
-    for(let i = 0; i < defDice; i++) {
-        console.log(Math.getRandomInt(defDice));
+async function defend() {
+    removeAllChildren(defDieList)
+    let button
+    for(let i = 0; i < defSlider.value; i++) {
+        switch(Math.floor(Math.random()*6)+1) {
+            case 1:
+            case 2: 
+            case 3: 
+            case 4:
+                button = await assignImage('./images/blank.png')
+                break
+            case 5:
+                button = await assignImage('./images/shield.png')
+                break
+            case 6: 
+                button = await assignImage('./images/crit.png')
+                break
+        }
+        defDieList.appendChild(button)
+        
     }
 }

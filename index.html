@@ -23,6 +23,18 @@
           </div>
 
         </div>
+        <div class="d-flex justify-content-evenly">
+            <div class="d-flex justify-content-left">
+              <label for="">Attack Rerolls</label>
+              <input type="range" min="0" max="15" value="0" class="slider" id="atk-rr-slider">
+              <div class="dice-num" id="atk-rr-val">0</div>
+          </div>
+          <div class="d-flex justify-content-left">
+              <label for="">Defence Rerolls</label>
+              <input type="range" min="0" max="15" value="0" class="slider" id="def-rr-slider">
+              <div class="dice-num" id="def-rr-val">0</div>
+          </div>
+        </div>
 
         <div class="d-flex justify-content-evenly">
             <button class="btn btn-dark" onclick="attack()">Attack</button>

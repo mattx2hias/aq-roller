@@ -2,24 +2,28 @@
 
 const atkSlider = document.getElementById('atk-slider')
 const defSlider = document.getElementById('def-slider')
+const atkRRSlider = document.getElementById('atk-rr-slider')
+const defRRSlider = document.getElementById('def-rr-slider')
 const atkVal = document.getElementById('atk-val')
 const defVal = document.getElementById('def-val')
+const atkRRVal = document.getElementById('atk-rr-val')
+const defRRVal = document.getElementById('def-rr-val')
 
 const atkDieList = document.getElementById('atk-die-list')
 const defDieList = document.getElementById('def-die-list')
 const atkCritList = document.getElementById('atk-crit-list')
 const defCritList = document.getElementById('def-crit-list')
 
-atkVal.innerHTML = atkSlider.value
-defVal.innerHTML = defSlider.value
+atkVal.innerText = atkSlider.value
+defVal.innerText = defSlider.value
+atkRRVal.innerText = atkRRSlider.value
+defRRVal.innerText = defRRSlider.value
 
-atkSlider.oninput = () => {
-    atkVal.innerText = atkSlider.value
-}
+atkSlider.oninput = () => { atkVal.innerText = atkSlider.value }
+defSlider.oninput = () => { defVal.innerText = defSlider.value }
+atkRRSlider.oninput = () => { atkRRVal.innerText = atkRRSlider.value }
+defRRSlider.oninput = () => { defRRVal.innerText = defRRSlider.value }
 
-defSlider.oninput = () => {
-    defVal.innerHTML = defSlider.value
-}
 
 function removeAllChildren(element) {
     let child = element.lastElementChild
@@ -56,15 +60,20 @@ function atkRoll() {
         case 1:
         case 2: 
             button = assignImage('./images/bow.png')
+            button.className = 'atkBtn'
+            button.onclick = reroll
             break
         case 3: 
         case 4:
         case 5:
             button = assignImage('./images/sword.png')
+            button.className = 'atkBtn'
+            button.onclick = reroll
             break
         case 6: 
         atkCrits++
         button = assignImage('./images/critAtk.png')
+        button.className = 'atkBtn'
         button.onclick = critAtk
         break
     }
@@ -100,13 +109,18 @@ function defRoll() {
         case 3: 
         case 4:
             button = assignImage('./images/blank.png')
+            button.className = 'defBtn'
+            button.onclick = reroll
             break
         case 5:
             button = assignImage('./images/shield.png')
+            button.className = 'defBtn'
+            button.onclick = reroll
             break
         case 6: 
             defCrits++
             button = assignImage('./images/crit.png')
+            button.className = 'defBtn'
             button.onclick = critDef
             break
     }
@@ -124,4 +138,14 @@ function critDef() {
     defCrits--
     if(defCrits >= 0)
         defCritList.appendChild(defRoll())
+}
+
+function reroll() {
+    if(this.className == 'atkBtn' && atkRRVal.innerText > 0) {
+        this.replaceWith(atkRoll())
+        atkRRVal.innerText--
+    } else if(this.className == 'defBtn' && defRRVal.innerText > 0){
+        this.replaceWith(defRoll())
+        defRRVal.innerText--
+    }
 }

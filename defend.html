@@ -18,20 +18,20 @@
             <li class="nav-item"><button class="btn btn-light" onclick="window.location.href='defend.html'">Defend</button></li>
           </ul>
         <div class="def-selection">
-            <div class="dice-num">
-                <label for="">Defence Dice: </label>
-                <div class="" id="def-val">0</div>
-            </div>
-            <div>
-                <input type="range" min="1" max="15" value="1" class="slider" id="def-slider" oninput="defSliderUpdate()">
-            </div>
-            <div class="dice-num">
-                <label for="">Defence Rerolls: </label>
-                <div id="def-rr-val">0</div>
-            </div>
-            <div>
-                <input type="range" min="0" max="15" value="0" class="slider" id="def-rr-slider" oninput="defSliderUpdate()">
-            </div>
+        <div class="dice-num">
+            <label for="">Defence Dice: </label>
+            <div class="" id="def-val">1</div>
+        </div>
+        <div>
+            <input type="range" min="1" max="15" value="1" class="slider" id="def-slider" oninput="defSliderUpdate()">
+        </div>
+        <div class="dice-num">
+            <label for="">Defence Rerolls: </label>
+            <div id="def-rr-val">0</div>
+        </div>
+        <div>
+            <input type="range" min="0" max="15" value="0" class="slider" id="def-rr-slider" oninput="defSliderUpdate()">
+        </div>
         </div>
         <div>
             <button class="btn btn-light" id="defBtn" onclick="defend()">Roll</button>

@@ -9,55 +9,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body>
-    <div class="container">
-        <div class="d-flex justify-content-evenly" id="dieSelector">
-          <div class="d-flex justify-content-left">
-            <label for="">Attack Dice</label>
-            <input type="range" min="1" max="15" value="1" class="slider" id="atk-slider">
-            <div class="dice-num" id="atk-val">0</div>
-          </div>
-          <div class="d-flex justify-content-left">
-            <label for="">Defence Dice</label>
-            <input type="range" min="1" max="15" value="1" class="slider" id="def-slider">
-            <div class="dice-num" id="def-val">0</div>
-          </div>
-
-        </div>
-        <div class="d-flex justify-content-evenly">
-            <div class="d-flex justify-content-left">
-              <label for="">Attack Rerolls</label>
-              <input type="range" min="0" max="15" value="0" class="slider" id="atk-rr-slider">
-              <div class="dice-num" id="atk-rr-val">0</div>
-          </div>
-          <div class="d-flex justify-content-left">
-              <label for="">Defence Rerolls</label>
-              <input type="range" min="0" max="15" value="0" class="slider" id="def-rr-slider">
-              <div class="dice-num" id="def-rr-val">0</div>
-          </div>
-        </div>
-
-        <div class="d-flex justify-content-evenly">
-            <button class="btn btn-dark" onclick="attack()">Attack</button>
-            <button class="btn btn-light" onclick="defend()">Defend</button>
-        </div>
-        <br>
-        <div class="d-flex justify-content-evenly" id="atk-die-list">
-
-        </div>
-        <br>
-        <div class="d-flex justify-content-left" id="atk-crit-list">
-
-        </div>
-        <br>
-        <div class="d-flex justify-content-evenly" id="def-die-list">
-
-        </div>
-        <br>
-        <div class="d-flex justify-content-left" id="def-crit-list">
-
-        </div>
+    <div class="bg-img"></div>
+    <div class="vertical-center">
+      <div class="container">
+        <ul class="nav flex-column text-center" id="menu">
+          <li class="nav-item"><button class="btn btn-dark" onclick="window.location.href='attack.html'">Attack</button></li>
+          <li class="nav-item"><button class="btn btn-light" onclick="window.location.href='defend.html'">Defend</button></li>
+          <li class="nav-item"><button class="btn btn-primary" onclick="window.location.href='https://arcadiaquest.com/AQ-Rulebook.pdf'">Rulebook</button></li>
+          <li class="nav-item"><button class="btn btn-primary" onclick="window.location.href='https://arcadiaquest.com/dl/AQ-FAQ-v1.pdf'">FAQ</button></li>
+        </ul>
 
     </div>
+    </div>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
